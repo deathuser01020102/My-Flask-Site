@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>URL Scanner - TestSecurity Lab</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #0f172a; color: #f8fafc; margin: 0; }
+        .navbar { background-color: #1e293b; padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #334155; }
+        .logo { font-size: 20px; font-weight: bold; color: #38bdf8; }
+        .nav-links a { color: #94a3b8; text-decoration: none; margin-left: 20px; font-size: 14px; }
+        .nav-links a:hover { color: #38bdf8; }
+        .main-container { padding: 40px; max-width: 800px; margin: 0 auto; }
+        .card { background: #1e293b; border: 1px solid #334155; padding: 30px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); margin-bottom: 20px; }
+        h2 { color: #38bdf8; margin-top: 0; }
+        label { display: block; margin-top: 15px; color: #94a3b8; font-size: 14px; }
+        input[type="text"] { width: 100%; padding: 12px; margin-top: 5px; background: #0f172a; border: 1px solid #475569; border-radius: 6px; color: white; box-sizing: border-box; }
+        button { margin-top: 20px; background: #0284c7; color: white; border: none; padding: 12px 20px; border-radius: 6px; cursor: pointer; font-weight: bold; width: 100%; }
+        button:hover { background: #0369a1; }
+        .results { margin-top: 20px; background: #0f172a; padding: 20px; border-radius: 8px; border: 1px solid #334155; }
+        .safe { color: #22c55e; font-weight: bold; }
+        .warning { color: #ef4444; font-weight: bold; }
+        .back-link { display: inline-block; margin-bottom: 20px; color: #94a3b8; text-decoration: none; font-size: 14px; }
+        .back-link:hover { color: #38bdf8; }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">🛡️ TestSecurity Lab</div>
+        <div class="nav-links">
+            <a href="/dashboard">Dashboard</a>
+            <a href="/logout" style="color: #ef4444;">Logout</a>
+        </div>
+    </div>
+    <div class="main-container">
+        <a href="/dashboard" class="back-link">← Back to Dashboard</a>
+        <div class="card">
+            <h2>🔍 URL Security Scanner</h2>
+            <p style="color: #94a3b8; font-size: 14px;">Enter a website URL to scan its security headers and connection status.</p>
+
+            <form method="POST">
+                <label>Target URL:</label>
+                <input type="text" name="url" placeholder="example.com or https://example.com" value="{{ url if url else '' }}" required>
+                <button type="submit">Start Scan</button>
+            </form>
+
+            {% if result %}
+                <div class="results">
+                    <h3>Scan Results for: {{ url }}</h3>
+                    {% if result.error %}
+                        <p class="warning">{{ result.error }}</p>
+                    {% else %}
+                        <p><strong>HTTP Status Code:</strong> {{ result.status }}</p>
+                        <p><strong>HTTPS Connection:</strong> 
+                            {% if result.secure %}
+                                <span class="safe">Secure (HTTPS)</span>
+                            {% else %}
+                                <span class="warning">Not Secure (HTTP)</span>
+                            {% endif %}
+                        </p>
+                        <h4>Security Headers:</h4>
+                        <ul>
+                            {% for header, val in result.headers.items() %}
+                                <li><strong>{{ header }}:</strong> {{ val }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
