@@ -1,5 +1,39 @@
 <!DOCTYPE html>
-<html>
-<head><title>Test</title></head>
-<body><h1>Sayt işləyir!</h1></body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home - TestSecurity Lab</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #0f172a; color: #f8fafc; margin: 0; display: flex; flex-direction: column; min-height: 100vh; }
+        .navbar { background-color: #1e293b; padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #334155; }
+        .logo { font-size: 20px; font-weight: bold; color: #38bdf8; }
+        .nav-links a { color: #94a3b8; text-decoration: none; margin-left: 20px; font-size: 14px; }
+        .nav-links a:hover { color: #38bdf8; }
+        .hero { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 40px; }
+        h1 { font-size: 48px; color: #38bdf8; margin-bottom: 10px; }
+        p { color: #94a3b8; font-size: 18px; max-width: 600px; margin-bottom: 30px; }
+        .btn-group a { background: #0284c7; color: white; padding: 12px 25px; border-radius: 6px; text-decoration: none; font-weight: bold; margin: 0 10px; }
+        .btn-group a:hover { background: #0369a1; }
+        .btn-secondary { background: #334155 !important; }
+        .btn-secondary:hover { background: #475569 !important; }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">🛡️ TestSecurity Lab</div>
+        <div class="nav-links">
+            <a href="/about">About</a>
+            <a href="/login">Login</a>
+            <a href="/register">Register</a>
+        </div>
+    </div>
+    <div class="hero">
+        <h1>Welcome to TestSecurity Lab</h1>
+        <p>A professional security testing and analysis platform designed to evaluate web vulnerabilities, inspect SSL certificates, and monitor system activity logs securely.</p>
+        <div class="btn-group">
+            <a href="/login">Get Started</a>
+            <a href="/about" class="btn-secondary">Learn More</a>
+        </div>
+    </div>
+</body>
 </html>
