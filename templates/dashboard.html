@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard - TestSecurity Lab</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #0f172a; color: #f8fafc; margin: 0; }
+        .navbar { background-color: #1e293b; padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #334155; }
+        .logo { font-size: 20px; font-weight: bold; color: #38bdf8; }
+        .nav-links a { color: #94a3b8; text-decoration: none; margin-left: 20px; font-size: 14px; }
+        .nav-links a:hover { color: #38bdf8; }
+        .main-container { padding: 40px; max-width: 1000px; margin: 0 auto; }
+        .welcome-card { background: linear-gradient(135deg, #1e293b, #0f172a); border: 1px solid #334155; padding: 30px; border-radius: 12px; margin-bottom: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
+        .welcome-card h2 { color: #38bdf8; margin-top: 0; font-size: 28px; }
+        .welcome-card p { color: #94a3b8; font-size: 16px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .card { background: #1e293b; border: 1px solid #334155; padding: 25px; border-radius: 12px; transition: transform 0.2s, border-color 0.2s; }
+        .card:hover { transform: translateY(-3px); border-color: #38bdf8; }
+        .card h3 { color: #f8fafc; margin-top: 0; font-size: 18px; }
+        .card p { color: #94a3b8; font-size: 14px; margin-bottom: 20px; }
+        .card-btn { background: #0284c7; color: white; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-size: 13px; font-weight: bold; display: inline-block; }
+        .card-btn:hover { background: #0369a1; }
+        .logout-btn { background: #ef4444; color: white; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-size: 13px; font-weight: bold; }
+        .logout-btn:hover { background: #dc2626; }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">🛡️ TestSecurity Lab</div>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+            <a href="/logout" class="logout-btn">Logout</a>
+        </div>
+    </div>
+    <div class="main-container">
+        <div class="welcome-card">
+            <h2>Welcome, <span style="color: #f8fafc;">{{ username }}</span>! 👋</h2>
+            <p>You have successfully logged into the system. From here, you can manage security tools and laboratory sections.</p>
+        </div>
+        
+        <div class="grid">
+            <div class="card">
+                <h3>🔍 URL Scanner</h3>
+                <p>Check website security headers and SSL certificates.</p>
+                <a href="/scanner" class="card-btn">Open Tool</a>
+            </div>
+            <div class="card">
+                <h3>⚙️ Profile Settings</h3>
+                <p>Update your account details and configure security settings.</p>
+                <a href="/profile" class="card-btn">Configure</a>
+            </div>
+            <div class="card">
+                <h3>📊 System Logs</h3>
+                <p>Review login history and activity reports.</p>
+                <a href="/logs" class="card-btn">View Logs</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
