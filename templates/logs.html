@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>System Logs - TestSecurity Lab</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #0f172a; color: #f8fafc; margin: 0; }
+        .navbar { background-color: #1e293b; padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #334155; }
+        .logo { font-size: 20px; font-weight: bold; color: #38bdf8; }
+        .nav-links a { color: #94a3b8; text-decoration: none; margin-left: 20px; font-size: 14px; }
+        .nav-links a:hover { color: #38bdf8; }
+        .main-container { padding: 40px; max-width: 900px; margin: 0 auto; }
+        .card { background: #1e293b; border: 1px solid #334155; padding: 30px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
+        h2 { color: #38bdf8; margin-top: 0; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #334155; font-size: 14px; }
+        th { color: #38bdf8; background-color: #0f172a; }
+        td { color: #94a3b8; }
+        .back-link { display: inline-block; margin-bottom: 20px; color: #94a3b8; text-decoration: none; font-size: 14px; }
+        .back-link:hover { color: #38bdf8; }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">🛡️ TestSecurity Lab</div>
+        <div class="nav-links">
+            <a href="/dashboard">Dashboard</a>
+            <a href="/logout" style="color: #ef4444;">Logout</a>
+        </div>
+    </div>
+    <div class="main-container">
+        <a href="/dashboard" class="back-link">← Back to Dashboard</a>
+        <div class="card">
+            <h2>📊 System Logs & Activity History</h2>
+            <p style="color: #94a3b8; font-size: 14px;">Recent operations and user activities in the system:</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>User</th>
+                        <th>Action / Operation</th>
+                        <th>Timestamp</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for log in logs %}
+                    <tr>
+                        <td style="color: #f8fafc; font-weight: bold;">{{ log[0] }}</td>
+                        <td>{{ log[1] }}</td>
+                        <td>{{ log[2] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
